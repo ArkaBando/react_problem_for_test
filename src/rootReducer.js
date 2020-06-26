@@ -1,16 +1,20 @@
 const initState = {
   cartCount:
     localStorage.getItem("cartCount") != undefined &&
-    localStorage.getItem("cartCount") != null
+    localStorage.getItem("cartCount") != null &&
+    localStorage.getItem("cartCount") != "undefined"
       ? localStorage.getItem("cartCount")
       : 0,
   user:
-    localStorage.getItem("user") != null && localStorage.getItem("user")
+    localStorage.getItem("user") != null &&
+    localStorage.getItem("user") &&
+    localStorage.getItem("user") != "undefined"
       ? JSON.parse(localStorage.getItem("user"))
       : undefined,
   notificationCount:
     localStorage.getItem("notificationCount") != undefined &&
-    localStorage.getItem("notificationCount") != null
+    localStorage.getItem("notificationCount") != null &&
+    localStorage.getItem("notificationCount") != "undefined"
       ? localStorage.getItem("notificationCount")
       : 0,
 };

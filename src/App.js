@@ -17,13 +17,14 @@ function App(props) {
   ]);
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user == undefined || user == null) {
+    let user = localStorage.getItem("user");
+
+    if (user == undefined || user == null || user == "undefined") {
       setRedirect(true);
     } else {
-      setCartCount(user.notificationCount);
-      if (user.notificationCount > 0) {
-        setMsg("Notifying message" + user.notificationCount);
+      setCartCount(props.notificationCount);
+      if (props.notificationCount > 0) {
+        setMsg("Notifying message" + props.notificationCount);
       }
       setRedirect(false);
     }
@@ -49,9 +50,9 @@ function App(props) {
         notificationCount: cartCount + 1,
       })
       .then((resp) => {
-        setMsg("Notifying message" + (cartCount + 1));
-        props.setNOTIF(cartCount);
-        setCartCount(cartCount + 1);
+        setMsg("Notifying message" + parseInt(parseInt(cartCount) + 1));
+        props.setNOTIF(parseInt(cartCount));
+        setCartCount(parseInt(cartCount) + 1);
       })
       .catch((error) => {
         console.log(error);
